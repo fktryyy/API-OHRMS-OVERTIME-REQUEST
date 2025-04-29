@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { OdooService } from '../odoo/odoo.service';
 import { OvertimeController } from './overtime.controller';
+import { OdooService } from '../odoo/odoo.service';
+import { ResumeService } from '../resume/resume.service'; // 🆕 Import ResumeService
 
 @Module({
   controllers: [OvertimeController],
-  providers: [OdooService]
+  providers: [OdooService, ResumeService], // 🆕 Tambahkan ResumeService ke providers
 })
 export class OvertimeModule {}

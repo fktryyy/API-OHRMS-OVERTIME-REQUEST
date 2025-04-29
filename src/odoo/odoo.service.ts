@@ -3,7 +3,7 @@ import axios from 'axios';
 
 @Injectable()
 export class OdooService {
-  private readonly url = 'https://staging.ssmindonesia.com/jsonrpc';
+  private readonly url = 'http://localhost:8069/jsonrpc';
   private readonly db = 'SSM';
   private readonly username = 'admin@ssmindonesia.com';
   private readonly password = 'a';

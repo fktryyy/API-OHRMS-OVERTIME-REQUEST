@@ -1,5 +1,5 @@
 export class CreateOvertimeRequestDto {
-  //employee_barcode: string;
+  id_user: string;
   employee_id: number;
   department_id: number;
   job_id?: number | false;
