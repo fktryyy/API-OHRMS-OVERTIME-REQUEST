@@ -136,7 +136,6 @@ async getAllOvertimeRequests(
         ['date_from', '<=', endDate],
       ];
     }
-
     const result = await this.odooService.call('hr.overtime', 'search_read', [
       domain,
       [
@@ -152,7 +151,22 @@ async getAllOvertimeRequests(
         'state',
       ],
     ]);
-      return result;
+    
+    // Tambahkan state_label ke setiap item
+    const stateLabels: { [key: string]: string } = {
+      draft: 'Draft',
+      f_approve: 'Waiting',
+      approved: 'Approved',
+      refused: 'Refused',
+    };
+    
+    const finalResult = result.map((item: any) => ({
+      ...item,
+      state_label: stateLabels[item.state] || item.state, // fallback ke nilai asli kalau tidak dikenal
+    }));
+    
+    return finalResult;
+    
     } catch (error) {
       throw new HttpException({
         status: 'error',
