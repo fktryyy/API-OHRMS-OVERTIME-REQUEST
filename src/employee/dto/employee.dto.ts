@@ -7,4 +7,5 @@ export class EmployeeDto {
     contract_id: [number, string];
     work_email?: string;
     work_phone?: string;
+    approver?: [number, string];
   }
