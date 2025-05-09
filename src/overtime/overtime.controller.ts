@@ -140,6 +140,7 @@ async getAllOvertimeRequests(
       domain,
       [
         'id',
+        'employee_barcode',
         'name',
         'employee_id',
         'department_id',
