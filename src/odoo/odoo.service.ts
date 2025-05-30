@@ -46,6 +46,18 @@ export class OdooService {
 
     return response.data.result;
   }
+
+   async findEmployeeByBarcode(barcode: string) {
+    const domain = [['barcode', '=', barcode]];
+    const fields = ['id', 'name', 'barcode', 'work_email'];
+
+    const employees = await this.call('hr.employee', 'search_read', [domain], {
+      fields,
+      limit: 1,
+    });
+
+    return employees.length ? employees[0] : null;
+  }
   async findEmployeeByUsername(username: string, uid: number, password: string) {
     const domain = [['user_id.login', '=', username]];
     const fields = ['id', 'name', 'barcode'];
