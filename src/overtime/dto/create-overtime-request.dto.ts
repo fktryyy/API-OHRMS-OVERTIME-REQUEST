@@ -10,4 +10,6 @@ export class CreateOvertimeRequestDto {
   contract_id: number;
   attchd_copy?: string | false;
   type: string;
+  master_batch?: number;
+  overtime_author?: String;
 }

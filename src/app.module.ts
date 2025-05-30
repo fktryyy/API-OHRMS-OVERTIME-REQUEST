@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { OvertimeModule } from './overtime/overtime.module';
 import { EmployeeModule } from './employee/employee.module';
-import { ResumeModule } from './resume/resume.module';
 import { AuthModule } from './auth/auth.module';
 import { User } from './auth/user.entity';
+import { LoginModule } from './login/login.module';
 
 @Module({
   imports: [
@@ -22,7 +22,7 @@ import { User } from './auth/user.entity';
     AuthModule, 
     EmployeeModule, 
     OvertimeModule, 
-    ResumeModule,
+    LoginModule,
   ],
 })
 export class AppModule {}

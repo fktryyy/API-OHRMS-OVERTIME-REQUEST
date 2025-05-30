@@ -8,4 +8,5 @@ export class EmployeeDto {
     work_email?: string;
     work_phone?: string;
     approver?: [number, string];
+    barcode: string;
   }

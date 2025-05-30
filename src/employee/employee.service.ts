@@ -17,6 +17,7 @@ export class EmployeeService {
       'work_email',
       'work_phone',
       'approver',
+      'barcode',
     ];
 
     return await this.odoo.call('hr.employee', 'search_read', [domain], { fields });
