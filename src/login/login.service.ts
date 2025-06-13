@@ -8,7 +8,7 @@ export class LoginService {
   async validateUsernamePassword(username: string, password: string) {
     // Cari employee yang punya username dan password cocok
     const domain = [['username', '=', username], ['password', '=', password]];
-    const fields = ['id', 'name', 'username', 'barcode'];
+    const fields = ['id', 'name', 'username', 'barcode', 'is_admin_type'];
 
     const result = await this.odooService.call('hr.employee', 'search_read', [domain], {
       fields,

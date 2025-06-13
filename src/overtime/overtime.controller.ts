@@ -136,18 +136,22 @@ async getAllOvertimeRequests(
       domain.push(['date_from', '>=', `${tanggal_awal} 00:00:00`]);
       domain.push(['date_from', '<=', `${tanggal_akhir} 23:59:59`]);
     } else if (tanggal) {
-      domain.push(['date_from', '>=', `${tanggal} 00:00:00`]);
+      const date = new Date(tanggal);
+      date.setDate(date.getDate() - 1);
+      const tanggalMinus1 = date.toISOString().split('T')[0];
+    
+      domain.push(['date_from', '>=', `${tanggalMinus1} 00:00:00`]);
       domain.push(['date_from', '<=', `${tanggal} 23:59:59`]);
     } else if (bulan && tahun) {
       const bulanString = bulan.toString().padStart(2, '0');
       const startDate = `${tahun}-${bulanString}-01 00:00:00`;
       const daysInMonth = new Date(tahun, bulan, 0).getDate();
       const endDate = `${tahun}-${bulanString}-${daysInMonth} 23:59:59`;
-
+    
       domain.push(['date_from', '>=', startDate]);
       domain.push(['date_from', '<=', endDate]);
     }
-
+    
     if (state) {
       domain.push(['state', '=', state]);
     }

@@ -114,4 +114,16 @@ export class EmployeeService {
       userId,
     };
   }
+
+
+  async getEmployeesByDepartmentId(departmentId: number) {
+    const employees = await this.odoo.call('hr.employee', 'search_read', [
+      [['department_id', '=', departmentId]],
+      ['id', 'name', 'job_id', 'work_email', 'barcode']
+    ]);
+  
+    return employees;
+  }
+  
+  
 }

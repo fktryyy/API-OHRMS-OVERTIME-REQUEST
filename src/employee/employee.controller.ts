@@ -67,4 +67,12 @@ export class EmployeeController {
     const employeeId = parseInt(id);
     return await this.employeeService.setEmployeeApproverByName(employeeId, approverName);
   }
+
+    // Ambil semua employee berdasarkan department_id
+  @Get('department/:departmentId/employees')
+  async getEmployeesByDepartmentId(@Param('departmentId') departmentId: string) {
+    const deptId = parseInt(departmentId);
+    return await this.employeeService.getEmployeesByDepartmentId(deptId);
+  }
+
 }
